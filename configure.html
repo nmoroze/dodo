@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dodo</title>
+	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		* {
+			font-size: 12pt;
+		}
+		a {
+			text-decoration: none;
+			color: black;
+		}
+		#add {
+			color: white;
+			background:#0080FF;
+		}
+/*		body {
+			background: #2EFEF7;
+		}
+*/		li.folders {
+  			padding-left: 2.3em ;
+  			padding-top: 1em;
+  			padding-bottom: 1em;
+  			list-style-type: none;
+		}
+		li.folders:nth-child(2) {
+			background: #DDD;
+		}
+		li.folders:before {
+			content: "\f07d"; 
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: normal;
+			text-decoration: inherit;
+			display: inline-block;
+			margin-left: -1.3em;
+			width: 1.3em;
+		}
+		.subcategory {
+			text-indent: 30px;
+		}
+	</style>
+</head>
+<body>
+
+<div id="template" style="display: none">
+	{{#folders}} 
+	<li class="folders" title='Click and drag to reorder' id='{{folder}}'>{{folder}}  
+	<ul>
+		<li>
+		Extensions: {{#filter.extension}}{{.}} {{/filter.extension}}
+		<a class="add-extension" folder="{{folder}}" href="#"><i class="fa fa-plus"></i></a></li>
+		<li>
+		URLs: {{#filter.url}}{{.}} {{/filter.url}} 
+		<a class="add-url" folder="{{folder}}" href="#"><i class="fa fa-plus"></i></a></li>
+	</ul>
+	</li> 
+	{{/folders}}
+</div>
+
+<div class="container">
+	<h2> Filters </h2> <br>
+	<button id="add" class="btn"><i class="fa fa-folder-o"></i> Add Folder</button>
+	<ul id="prefs">
+	</ul>
+	<br>
+	<center><i id="trash" style="visibility: hidden; font-size: 144pt;" class="fa fa-trash-o"></i> </center>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="mustache.js"></script>
+<script src="configure.js"></script>
+</html>
