@@ -11,10 +11,18 @@ $(document).ready(function() {
 		receive: function(event, ui) {
         	sortableIn = 1;
     	},
-    	over: function(e, ui) { $("#trash").css("visibility", "hidden"); sortableIn = 1; },
-    	out: function(e, ui) { $("#trash").css("visibility", "visible");sortableIn = 0; },
-    	stop: function(e, ui) {$("#trash").css("visibility", "hidden");},
+    	over: function(e, ui) { $("#trash").css("visibility", "hidden"); 
+    	    $(ui.item).css("opacity", 1); 
+			sortableIn = 1; },
+    	out: function(e, ui) { 
+    		$("#trash").css("visibility", "visible"); 
+    		$(ui.item).css("opacity", 0.5); 
+    		sortableIn = 0; },
+    	stop: function(e, ui) { $(ui.item).css("opacity", 1); 
+
+    		$("#trash").css("visibility", "hidden");},
     	beforeStop: function(e, ui) {
+    		$(ui.item).css("opacity", 1); 
     		$("#trash").css("visibility", "hidden");
         	if (sortableIn == 0) { 
         		console.log(ui.item[0].id);
@@ -26,6 +34,7 @@ $(document).ready(function() {
     	},
 		update: function(event, ui) {
 			$("#trash").css("visibility", "hidden");
+			$(ui.item).css("opacity", 1);
 
 			var sortedIDs = $( "#prefs" ).sortable( "toArray" );
 			var newPrefs = [];
@@ -37,6 +46,7 @@ $(document).ready(function() {
 					}
 				}
 			}
+
 			prefs = newPrefs;
 			savePreferences();
 		}
@@ -95,13 +105,22 @@ $(document).ready(function() {
 	}
 
 	function savePreferences() {
+		$("#save-notifier").html("Saving...");
 		localStorage["folders"] = JSON.stringify(prefs);
+		$("#save-notifier").html("Saved "+new Date().toLocaleString());
 	}
 
 	function displayPreferences() {
 		var template = $("#template").html();
+		var displayPrefs = JSON.parse(JSON.stringify(prefs));
+		for(var i=0; i<displayPrefs.length; i++) {
+			displayPrefs[i].filter.extension = 
+				displayPrefs[i].filter.extension.join(", ");
+			displayPrefs[i].filter.url = 
+				displayPrefs[i].filter.url.join(", ");
+		}
 		$("#prefs").html(Mustache.render(template, {
-				"folders": prefs,
+				"folders": displayPrefs,
 			}
 		));
 		resetClickHandlers(prefs);

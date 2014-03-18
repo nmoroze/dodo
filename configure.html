@@ -38,6 +38,23 @@
 			margin-left: -1.3em;
 			width: 1.3em;
 		}
+		h2 {
+			border-bottom: 2px solid #CCC;
+		}
+		#prefs {
+			padding-bottom: 100px;
+		}
+		#save-notifier {
+			padding-top: 10pt;
+			float: right;
+			color: gray;
+			font-weight: normal !important;
+		}
+		#trash {
+			visibility: hidden; 
+			color: red;
+			font-size: 32pt;
+		}
 		.subcategory {
 			text-indent: 30px;
 		}
@@ -50,7 +67,7 @@
 	<li class="folders" title='Click and drag to reorder' id='{{folder}}'>{{folder}}  
 	<ul>
 		<li>
-		Extensions: {{#filter.extension}}{{.}} {{/filter.extension}}
+		Extensions: {{filter.extension}} 
 		<a class="add-extension" folder="{{folder}}" href="#"><i class="fa fa-plus"></i></a></li>
 		<li>
 		URLs: {{#filter.url}}{{.}} {{/filter.url}} 
@@ -61,13 +78,13 @@
 </div>
 
 <div class="container">
-	<h2> Filters </h2> <br>
+	<h2>Filters <span id="save-notifier"></span></h2> <br>
 	<button id="add" class="btn"><i class="fa fa-folder-o"></i> Add Folder</button>
 	<button id="defaults" class="btn">Set to defaults</button>
 	<ul id="prefs">
 	</ul>
 	<br>
-	<center><i id="trash" style="visibility: hidden; font-size: 144pt;" class="fa fa-trash-o"></i> </center>
+	<center><i id="trash" class="fa fa-trash-o"></i> </center>
 </div>
 
 </body>
