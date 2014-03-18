@@ -54,6 +54,12 @@ $(document).ready(function() {
 		displayPreferences();
 	});
 
+	$("#defaults").click(function() {
+		prefs = defaultPreferences["standard"];
+		savePreferences();
+		displayPreferences();
+	});
+
 	function addPreference(folder, filter) {
 		for(var i=0; i<prefs.length; i++) {
 			if(prefs[i].folder == folder) {
