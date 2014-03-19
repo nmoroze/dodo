@@ -34,6 +34,7 @@ $(document).ready(function() {
 
 			var sortedIDs = $( "#prefs" ).sortable( "toArray" );
 			var newPrefs = [];
+			var prefs = Preferences.get();
 			for(var i=0; i<sortedIDs.length; i++) {
 				for(var j=0; j<prefs.length; j++) {
 					if(sortedIDs[i] == prefs[j].folder) {
@@ -42,8 +43,7 @@ $(document).ready(function() {
 					}
 				}
 			}
-
-			prefs.set(newPrefs);
+			Preferences.set(newPrefs);
 		}
 	});
 
