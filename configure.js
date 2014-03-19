@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	console.log("jquery works");
 	Preferences.init(displayPreferences);
-	
+
 	displayPreferences();
 
 	$("#prefs").sortable({
@@ -76,7 +76,7 @@ $(document).ready(function() {
 				"folders": Preferences.get(),
 			}
 		));
-		resetClickHandlers(prefs);
+		resetClickHandlers();
 	}
  
 	function resetClickHandlers() {

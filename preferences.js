@@ -26,7 +26,7 @@ var Preferences = function() {
 			filter: filter,
 		});
 		save();
-		displayPreferences();
+		refreshDisplay();
 	}
 
 	var del = function(folder, filter) {
