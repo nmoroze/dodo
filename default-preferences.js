@@ -10,7 +10,7 @@ var defaultPreferences = {
 		{
 			folder: "Images",
 			filter: {
-				extension: ["png, jpg, jpeg, gif"],
+				extension: ["png", "jpg", "jpeg", "gif"],
 				url: [],
 			},
 		},

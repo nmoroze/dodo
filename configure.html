@@ -19,7 +19,13 @@
 /*		body {
 			background: #2EFEF7;
 		}
-*/		li.folders {
+*/		.delete {
+			padding-right: 5px;
+			vertical-align: super;
+			font-size: 12px;
+			color: gray;
+		}
+		li.folders {
   			padding-left: 2.3em ;
   			padding-top: 1em;
   			padding-bottom: 1em;
@@ -67,10 +73,10 @@
 	<li class="folders" title='Click and drag to reorder' id='{{folder}}'>{{folder}}  
 	<ul>
 		<li>
-		Extensions: {{filter.extension}} 
+		Extensions: {{#filter.extension}}{{.}}<a folder={{folder}} extension="{{.}}" class="delete delete-ext" href="#">x</a> {{/filter.extension}}
 		<a class="add-extension" folder="{{folder}}" href="#"><i class="fa fa-plus"></i></a></li>
 		<li>
-		URLs: {{#filter.url}}{{.}} {{/filter.url}} 
+		URLs: {{#filter.url}}{{.}}<a folder={{folder}} url="{{.}}" class="delete delete-url" href="#">x</a> {{/filter.url}} 
 		<a class="add-url" folder="{{folder}}" href="#"><i class="fa fa-plus"></i></a></li>
 	</ul>
 	</li> 

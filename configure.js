@@ -92,43 +92,9 @@ $(document).ready(function() {
 		displayPreferences();
 	}
 
-	function deletePreference(folder) {
-		for(var i=0; i<prefs.length; i++) {
-			if(folder == prefs[i].folder) {
-				prefs.splice(i, 1);
-				console.log(prefs);
-				savePreferences();
-				displayPreferences();
-				return;
-			}
-		}
-	}
-
-	function savePreferences() {
-		$("#save-notifier").html("Saving...");
-		localStorage["folders"] = JSON.stringify(prefs);
-		$("#save-notifier").html("Saved "+new Date().toLocaleString());
-	}
-
-	function displayPreferences() {
-		var template = $("#template").html();
-		var displayPrefs = JSON.parse(JSON.stringify(prefs));
-		for(var i=0; i<displayPrefs.length; i++) {
-			displayPrefs[i].filter.extension = 
-				displayPrefs[i].filter.extension.join(", ");
-			displayPrefs[i].filter.url = 
-				displayPrefs[i].filter.url.join(", ");
-		}
-		$("#prefs").html(Mustache.render(template, {
-				"folders": displayPrefs,
-			}
-		));
-		resetClickHandlers(prefs);
-	}
- 
-	function resetClickHandlers() {
-		$(".delete").click(function(e) {
-			var folder = $(this).attr("folder");
+	function deletePreference(folder, filter) {
+		if(!filter) {
+			console.log("lol kill");
 			for(var i=0; i<prefs.length; i++) {
 				if(folder == prefs[i].folder) {
 					prefs.splice(i, 1);
@@ -138,8 +104,57 @@ $(document).ready(function() {
 					return;
 				}
 			}
-		});
+		}
+		else {
+			console.log("plz not whoel thing");
+			for(var i=0; i<prefs.length; i++) {
+				if(folder == prefs[i].folder) {
+					for(var key in filter) {
+						prefs[i]["filter"][key] = arr_diff(prefs[i]["filter"][key], filter[key]);
+					}
+					savePreferences();
+					displayPreferences();
+					return;
+				}
+			}
+		}
+	}
 
+	//http://stackoverflow.com/questions/1187518/javascript-array-difference
+	function arr_diff(a1, a2) {
+		var a=[], diff=[];
+		for(var i=0;i<a1.length;i++)
+		a[a1[i]]=true;
+		for(var i=0;i<a2.length;i++)
+		if(a[a2[i]]) delete a[a2[i]];
+		else a[a2[i]]=true;
+		for(var k in a)
+		diff.push(k);
+		return diff;
+	}
+	function savePreferences() {
+		$("#save-notifier").html("Saving...");
+		localStorage["folders"] = JSON.stringify(prefs);
+		$("#save-notifier").html("Saved "+new Date().toLocaleString());
+	}
+
+	function displayPreferences() {
+		var template = $("#template").html();
+		var displayPrefs = JSON.parse(JSON.stringify(prefs));
+		// for(var i=0; i<displayPrefs.length; i++) {
+		// 	displayPrefs[i].filter.extension = 
+		// 		displayPrefs[i].filter.extension.join(", ");
+		// 	displayPrefs[i].filter.url = 
+		// 		displayPrefs[i].filter.url.join(", ");
+		// }
+		$("#prefs").html(Mustache.render(template, {
+				"folders": displayPrefs,
+			}
+		));
+		resetClickHandlers(prefs);
+	}
+ 
+	function resetClickHandlers() {
 		$(".add-extension").click(function(e) {
 			var folder = $(this).attr("folder");
 			var extension = prompt("Extension?");
@@ -147,6 +162,25 @@ $(document).ready(function() {
 				return;
 			addPreference(folder, {
 				extension: [extension],
+			});
+		});
+
+
+		$(".delete-ext").click(function(e) {
+			var folder = $(this).attr("folder");
+			var extension = $(this).attr("extension");
+
+			deletePreference(folder, {
+				extension: [extension],
+			});
+		});
+
+		$(".delete-url").click(function(e) {
+			var folder = $(this).attr("folder");
+			var url = $(this).attr("url");
+
+			deletePreference(folder, {
+				url: [url],
 			});
 		});
 		
