@@ -7,19 +7,24 @@
 	<style>
 		* {
 			font-size: 12pt;
+			overflow-x:hidden
+
 		}
 		a {
 			text-decoration: none;
 			color: black;
+		}
+		a:hover{
+			text-decoration: none;
 		}
 		.btn {
 			color: white !important;
 			background:#0080FF !important;
 		}
 /*		body {
-			background: #2EFEF7;
-		}
-*/		.delete {
+			background: #CEFFE2;
+		}*/
+		.delete {
 			padding-right: 5px;
 			vertical-align: super;
 			font-size: 12px;
@@ -30,6 +35,9 @@
   			padding-top: 1em;
   			padding-bottom: 1em;
   			list-style-type: none;
+		}
+		li:hover {
+			cursor: pointer;
 		}
 		li.folders:nth-child(even) {
 			background: #DDD;
@@ -57,8 +65,6 @@
 			font-weight: normal !important;
 		}
 		#trash {
-			visibility: hidden; 
-			color: red;
 			font-size: 32pt;
 		}
 		.subcategory {
@@ -84,13 +90,13 @@
 </div>
 
 <div class="container">
-	<h2>Filters <span id="save-notifier"></span></h2> <br>
+	<h2>Filters <span id="save-notifier"></span></h2>
 	<button id="add" class="btn"><i class="fa fa-folder-o"></i> Add Folder</button>
 	<button id="defaults" class="btn">Set to defaults</button>
-	<ul id="prefs">
-	</ul>
+	<ol id="prefs">
+	</ol>
 	<br>
-	<center><i id="trash" class="fa fa-trash-o"></i> </center>
+	<center><i id="trash" class="fa fa-trash-o"></i><br>Drag here to delete</center>
 </div>
 
 </body>

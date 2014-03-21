@@ -16,7 +16,7 @@ var downloadStarted = function(download, suggest) {
 	console.log(url);
 
 	folder = getFolder({
-		"extension": extension,
+		"extension": extension.toLowerCase();,
 		"url": url,
 	});
 
@@ -46,5 +46,16 @@ var match = function(info, filter) {
 	}
 	return true;
 }
+
+// http://stackoverflow.com/questions/5745822/open-a-help-page-after-chrome-extension-is-installed-first-time
+function install_notice() {
+    if (localStorage.getItem('install_time'))
+        return;
+
+    var now = new Date().getTime();
+    localStorage.setItem('install_time', now);
+    chrome.tabs.create({url: "configure.html"});
+}
+install_notice();
 
 chrome.downloads.onDeterminingFilename.addListener(downloadStarted);

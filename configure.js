@@ -8,18 +8,18 @@ $(document).ready(function() {
 		receive: function(event, ui) {
         	sortableIn = 1;
     	},
-    	over: function(e, ui) { $("#trash").css("visibility", "hidden"); 
+    	over: function(e, ui) { $("#trash").css("color", "black"); 
     	    $(ui.item).css("opacity", 1); 
 			sortableIn = 1; },
     	out: function(e, ui) { 
-    		$("#trash").css("visibility", "visible"); 
+    		$("#trash").css("color", "red"); 
     		$(ui.item).css("opacity", 0.5); 
     		sortableIn = 0; },
     	stop: function(e, ui) { $(ui.item).css("opacity", 1); 
-    		$("#trash").css("visibility", "hidden");},
+    		$("#trash").css("color", "black");},
     	beforeStop: function(e, ui) {
     		$(ui.item).css("opacity", 1); 
-    		$("#trash").css("visibility", "hidden");
+    		$("#trash").css("color", "black");
         	if (sortableIn == 0) { 
         		console.log(ui.item[0].id);
         		Preferences.del(ui.item[0].id);
@@ -29,7 +29,7 @@ $(document).ready(function() {
         	} 
     	},
 		update: function(event, ui) {
-			$("#trash").css("visibility", "hidden");
+			$("#trash").css("color", "black");
 			$(ui.item).css("opacity", 1);
 
 			var sortedIDs = $( "#prefs" ).sortable( "toArray" );
@@ -66,12 +66,7 @@ $(document).ready(function() {
 
 	function displayPreferences() {
 		var template = $("#template").html();
-		// for(var i=0; i<displayPrefs.length; i++) {
-		// 	displayPrefs[i].filter.extension = 
-		// 		displayPrefs[i].filter.extension.join(", ");
-		// 	displayPrefs[i].filter.url = 
-		// 		displayPrefs[i].filter.url.join(", ");
-		// }
+
 		$("#prefs").html(Mustache.render(template, {
 				"folders": Preferences.get(),
 			}
@@ -82,9 +77,13 @@ $(document).ready(function() {
 	function resetClickHandlers() {
 		$(".add-extension").click(function(e) {
 			var folder = $(this).attr("folder");
-			var extension = prompt("Extension?");
+			var extension = prompt("Extension?").toLowerCase();
 			if(!extension)
 				return;
+
+			if (extension.substring(0, 1) == '.') { 
+  				extension = extension.substring(1);
+			}
 			Preferences.add(folder, {
 				extension: [extension],
 			});
