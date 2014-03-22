@@ -48,15 +48,16 @@ $(document).ready(function() {
 	});
 
 	$("#add").click(function() {
-		var folder = prompt("Folder?");
-		if(!folder)
-			return;
-		Preferences.add(folder, {
-			extension: [],
-			url: [],
+		bootbox.prompt("Folder?", function(folder) {
+			if(!folder)
+				return;
+			Preferences.add(folder, {
+				extension: [],
+				url: [],
+			});
+			Preferences.save();
+			displayPreferences();
 		});
-		Preferences.save();
-		displayPreferences();
 	});
 
 	$("#defaults").click(function() {
@@ -77,18 +78,19 @@ $(document).ready(function() {
 	function resetClickHandlers() {
 		$(".add-extension").click(function(e) {
 			var folder = $(this).attr("folder");
-			var extension = prompt("Extension?").toLowerCase();
-			if(!extension)
-				return;
+			bootbox.prompt("Extension", function(extension) {
+				extension = extension.toLowerCase();
+				if(!extension)
+					return;
 
-			if (extension.substring(0, 1) == '.') { 
-  				extension = extension.substring(1);
-			}
-			Preferences.add(folder, {
-				extension: [extension],
+				if (extension.substring(0, 1) == '.') { 
+	  				extension = extension.substring(1);
+				}
+				Preferences.add(folder, {
+					extension: [extension],
+				});
 			});
 		});
-
 
 		$(".delete-ext").click(function(e) {
 			var folder = $(this).attr("folder");
@@ -110,11 +112,12 @@ $(document).ready(function() {
 		
 		$(".add-url").click(function(e) {
 			var folder = $(this).attr("folder");
-			var url = prompt("URL?");
-			if(!url)
-				return;
-			Preferences.add(folder, {
-				url: [url],
+			var url = bootbox.prompt("URL?", function(url) {
+				if(!url)
+					return;
+				Preferences.add(folder, {
+					url: [url],
+				});
 			});
 		});
 	}
