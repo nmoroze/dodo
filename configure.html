@@ -3,7 +3,8 @@
 <head>
 	<title>Dodo</title>
 	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
 	<style>
 		* {
 			font-size: 12pt;
@@ -52,6 +53,7 @@
 			margin-left: -1.3em;
 			width: 1.3em;
 		}
+		body.modal-open {margin-right: 0px}
 		h2 {
 			border-bottom: 2px solid #CCC;
 		}
@@ -102,7 +104,9 @@
 </body>
 <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<script src="mustache.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/mustache.js"></script>
+<script src="lib/bootbox.min.js"></script>
 <script src="preferences.js"></script>
 <script src="configure.js"></script>
 <script src="default-preferences.js"></script>
