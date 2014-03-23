@@ -16,7 +16,7 @@ var downloadStarted = function(download, suggest) {
 	console.log(url);
 
 	folder = getFolder({
-		"extension": extension.toLowerCase();,
+		"extension": extension.toLowerCase(),
 		"url": url,
 	});
 
@@ -30,7 +30,6 @@ var getFolder = function(info) {
 	var folders = JSON.parse(localStorage["folders"]);
 	for(var i=0; i<folders.length; i++) {
 		var filter = folders[i].filter;
-
 		if(match(info, filter))
 			return folders[i].folder;
 	}
@@ -40,11 +39,11 @@ var getFolder = function(info) {
 var match = function(info, filter) {
 	for(var key in info) {
 		if(filter[key] && filter[key].length > 0) {
-			if(filter[key].indexOf(info[key]) == -1)
-				return false;
+			if(filter[key].indexOf(info[key]) != -1)
+				return true;
 		}
 	}
-	return true;
+	return false;
 }
 
 // Open options page first time extension is installed

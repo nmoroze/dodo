@@ -4,18 +4,26 @@
 
 }
 a {
-/*	color: #0080FF;
-*/}
+	color: #0080FF;
+}
 a.add-url, a.add-extension {
-	color: black !important;
+	color: black;
+}
+a.add-url:hover, a.add-extension:hover {
+	color: #428BCA;
 }
 a:hover{
 	text-decoration: none;
 }
-body.modal-open {margin-right: 0px}
+body.modal-open {
+	margin-right: 0px;
+}
 .btn {
-	color: white !important;
-	background:#0080FF !important;
+	color: white;
+	background:#0080FF;
+}
+.btn:hover{
+	color: white;
 }
 #button-bar {
 	padding-bottom: 5px;
@@ -28,7 +36,7 @@ body.modal-open {margin-right: 0px}
 	color: gray;
 }
 #footer {
-	color: gray !important;
+	color: gray;
 	float: right;
 }
 .footer {
@@ -67,7 +75,6 @@ li.folders:before {
 	padding-top: 10pt;
 	float: right;
 	color: gray;
-	font-weight: normal !important;
 }
 #trash {
 	font-size: 32pt;
