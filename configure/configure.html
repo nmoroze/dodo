@@ -21,16 +21,37 @@
 	</ul>
 	</li> 
 	{{/folders}}
+	{{^folders}}
+	It looks like you haven't created any filters yet! Click <a href="#" class="add-filter">here</a> to add a folder. Or, click <a href="#" class="defaults">here</a> to automatically load some common defaults.
+	<br>
+	Once you have created a folder, you can modify its filters by adding and deleting the corresponding file extensions and websites.
+	<br>
+	Still confused? Click <a href="#" class="help">here</a> for help.
+	{{/folders}}
 </div>
 
 <div class="container">
-	<h2>Filters <span id="save-notifier"></span></h2>
-	<button id="add" class="btn"><i class="fa fa-folder-o"></i> Add Folder</button>
-	<button id="defaults" class="btn">Set to defaults</button>
-	<ol id="prefs">
-	</ol>
-	<br>
-	<center><i id="trash" class="fa fa-trash-o"></i><br>Drag here to delete</center>
+	<h2>Filters </h2>
+	
+	<div id="button-bar">
+		<button class="btn add-filter"><i class="fa fa-folder-o"></i> Add Filter</button>
+		<button class="btn defaults">Set to Defaults</button>
+		<span id="save-notifier"></span>
+	</div>
+
+	<div id="prefs-box">
+		<ol id="prefs">
+		</ol>
+	</div>
+	
+	<div id="trashcan">
+		<center><i id="trash" class="fa fa-trash-o"></i><br>Drag here to delete</center>
+	</div>
+
+	<div id="footer">
+		<a href="#" class="footer about">About</a> |
+		<a href="#" class="footer help">Help</a>
+	</div>
 </div>
 
 </body>

@@ -1,66 +1,80 @@
 * {
-			font-size: 12pt;
-			overflow-x:hidden
+	font-size: 12pt;
+	overflow-x:hidden
 
-		}
-		a {
-			text-decoration: none;
-			color: black;
-		}
-		a:hover{
-			text-decoration: none;
-		}
-		.btn {
-			color: white !important;
-			background:#0080FF !important;
-		}
-/*		body {
-			background: #CEFFE2;
-		}*/
-		.delete {
-			padding-right: 5px;
-			vertical-align: super;
-			font-size: 12px;
-			color: gray;
-		}
-		li.folders {
-  			padding-left: 2.3em ;
-  			padding-top: 1em;
-  			padding-bottom: 1em;
-  			list-style-type: none;
-		}
-		li:hover {
-			cursor: pointer;
-		}
-		li.folders:nth-child(even) {
-			background: #DDD;
-		}
-		li.folders:before {
-			content: "\f07d"; 
-			font-family: FontAwesome;
-			font-style: normal;
-			font-weight: normal;
-			text-decoration: inherit;
-			display: inline-block;
-			margin-left: -1.3em;
-			width: 1.3em;
-		}
-		body.modal-open {margin-right: 0px}
-		h2 {
-			border-bottom: 2px solid #CCC;
-		}
-		#prefs {
-			padding-bottom: 100px;
-		}
-		#save-notifier {
-			padding-top: 10pt;
-			float: right;
-			color: gray;
-			font-weight: normal !important;
-		}
-		#trash {
-			font-size: 32pt;
-		}
-		.subcategory {
-			text-indent: 30px;
-		}
+}
+a {
+/*	color: #0080FF;
+*/}
+a.add-url, a.add-extension {
+	color: black !important;
+}
+a:hover{
+	text-decoration: none;
+}
+body.modal-open {margin-right: 0px}
+.btn {
+	color: white !important;
+	background:#0080FF !important;
+}
+#button-bar {
+	padding-bottom: 5px;
+	border-bottom: 2px solid #CCC;
+}
+.delete {
+	padding-right: 5px;
+	vertical-align: super;
+	font-size: 12px;
+	color: gray;
+}
+#footer {
+	color: gray !important;
+	float: right;
+}
+.footer {
+	color: gray;
+}
+i {
+	vertical-align: middle;
+}
+li.folders {
+	padding-left: 2.3em ;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	list-style-type: none;
+}
+li:hover {
+	cursor: pointer;
+}
+li.folders:nth-child(even) {
+	background: #DDD;
+}
+li.folders:before {
+	content: "\f07d"; 
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	text-decoration: inherit;
+	display: inline-block;
+	margin-left: -1.3em;
+	width: 1.3em;
+}
+#prefs {
+	height: 70vh;
+	padding-bottom: 100px;
+}
+#save-notifier {
+	padding-top: 10pt;
+	float: right;
+	color: gray;
+	font-weight: normal !important;
+}
+#trash {
+	font-size: 32pt;
+}
+#trashcan {
+	float: bottom;
+}
+.subcategory {
+	text-indent: 30px;
+}

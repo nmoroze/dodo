@@ -47,6 +47,7 @@ var match = function(info, filter) {
 	return true;
 }
 
+// Open options page first time extension is installed
 // http://stackoverflow.com/questions/5745822/open-a-help-page-after-chrome-extension-is-installed-first-time
 function install_notice() {
     if (localStorage.getItem('install_time'))
