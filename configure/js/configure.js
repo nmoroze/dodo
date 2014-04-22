@@ -9,11 +9,10 @@ $(document).ready(function() {
         	sortableIn = 1;
     	},
     	over: function(e, ui) { $("#trash").css("color", "black"); 
-    	    $(ui.item).css("opacity", 1); 
+    	    $(ui.item).css("opacity", 1);        	
 			sortableIn = 1; },
     	out: function(e, ui) { 
     		$("#trash").css("color", "red"); 
-    		$(ui.item).css("opacity", 0.5); 
     		sortableIn = 0; },
     	stop: function(e, ui) { $(ui.item).css("opacity", 1); 
     		$("#trash").css("color", "black");},
@@ -53,6 +52,21 @@ $(document).ready(function() {
 		return false;
 	});
 
+	$(".help").on("click", function(e) {
+		bootbox.alert("Welcome to Dodo! This interface provides an easy way to manage your Dodo filters.\
+			A filter in Dodo consists of two different things: <br> <br>\
+			A <b>folder</b>, where items that match your criteria are stored when you download them, and the \
+			<b>criteria</b>, which specify what files go into the folder, based on their file extensions and the website they came from. \
+			Filters can be rearranged in priority by dragging and dropping them. To get started, you can use the buttons above to either load default settings, \
+			or create your own filter from scratch.");
+	});
+
+	$(".about").click(function(e) {
+		bootbox.alert("<b>Dodo v0.1</b> <br> by Noah Moroze <br> \
+			Thanks for trying out Dodo! If you would like to file a bug report, please submit it <a href='http://gitreports.com/issue/nmoroze/dodo'>here</a>.<br> \
+			Dodo is an open source project. Feel free to check it out and contribute on <a href='https://github.com/nmoroze/dodo'>Github</a>.");
+	});
+	
 	$(".add-filter").click(function() {
 		bootbox.prompt("Folder", function(folder) {
 			if(!folder)
@@ -81,22 +95,7 @@ $(document).ready(function() {
 		resetClickHandlers();
 	}
  
-	function resetClickHandlers() {	
-		$(".help").on("click", function(e) {
-			bootbox.alert("Welcome to Dodo! This interface provides an easy way to manage your Dodo filters.\
-				A filter in Dodo consists of two different things: <br> <br>\
-				A <b>folder</b>, where items that match your criteria are stored when you download them, and the \
-				<b>criteria</b>, which specify what files go into the folder, based on their file extensions and the website they came from. \
-				Filters can be rearranged in priority by dragging and dropping them. To get started, you can use the buttons above to either load default settings, \
-				or create your own filter from scratch.");
-		});
-
-		$(".about").click(function(e) {
-			bootbox.alert("<b>Dodo v0.1</b> <br> by Noah Moroze <br> \
-				Thanks for trying out Dodo! If you would like to file a bug report, please submit it <a href='http://gitreports.com/issue/nmoroze/dodo'>here</a>.<br> \
-				Dodo is an open source project. Feel free to check it out and contribute on <a href='https://github.com/nmoroze/dodo'>Github</a>.");
-		});
-
+	function resetClickHandlers() {
 		$(".add-extension").click(function(e) {
 			var folder = $(this).attr("folder");
 			bootbox.prompt("Extension", function(extension) {

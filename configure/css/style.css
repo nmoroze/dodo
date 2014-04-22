@@ -1,7 +1,6 @@
 * {
 	font-size: 12pt;
-	overflow-x:hidden
-
+	overflow-x:hidden;
 }
 a {
 	color: #0080FF;
@@ -24,6 +23,9 @@ body.modal-open {
 }
 .btn:hover{
 	color: white;
+}
+.btn:focus {
+	color: white !important;
 }
 #button-bar {
 	padding-bottom: 5px;
@@ -55,7 +57,7 @@ li:hover {
 	cursor: pointer;
 }
 li.folders:nth-child(even) {
-	background: #DDD;
+	background: rgba(238, 238, 238, 0.4);
 }
 li.folders:before {
 	content: "\f07d"; 
@@ -70,6 +72,7 @@ li.folders:before {
 #prefs {
 	height: 70vh;
 	padding-bottom: 100px;
+	padding: 0px;
 }
 #save-notifier {
 	padding-top: 10pt;
