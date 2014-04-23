@@ -54,7 +54,7 @@ function install_notice() {
 
     var now = new Date().getTime();
     localStorage.setItem('install_time', now);
-    chrome.tabs.create({url: "configure.html"});
+    chrome.tabs.create({url: "configure/configure.html"});
 }
 install_notice();
 
