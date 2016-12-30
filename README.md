@@ -1,5 +1,4 @@
 # Dodo
-======
 
 Dodo is a Chrome extension that automatically organizes your downloads into folders by file type and/or download URL.   
 
