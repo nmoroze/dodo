@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	console.log("jquery works");
 	Preferences.init(displayPreferences);
 
 	displayPreferences();
@@ -20,7 +19,6 @@ $(document).ready(function() {
     		$(ui.item).css("opacity", 1); 
     		$("#trash").css("color", "black");
         	if (sortableIn == 0) { 
-        		console.log(ui.item[0].id);
         		Preferences.del(ui.item[0].id);
         		ui.item.remove();
         		Preferences.save();

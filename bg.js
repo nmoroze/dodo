@@ -4,6 +4,8 @@ var downloadStarted = function(download, suggest) {
 	if(extension == filename)
 		extension = "";
 
+	// get root domain of download referrer
+	// https://gist.github.com/jlong/2428561 
 	url = download.referrer;
 	var parser = document.createElement('a');
 	parser.href = url;
@@ -13,8 +15,7 @@ var downloadStarted = function(download, suggest) {
 		urlComponents.shift();
 
 	url = urlComponents.join(".");
-	console.log(url);
-
+	
 	folder = getFolder({
 		"extension": extension.toLowerCase(),
 		"url": url,
@@ -24,6 +25,7 @@ var downloadStarted = function(download, suggest) {
 }
 
 var getFolder = function(info) {
+	// check if settings have been configured	
 	if(!localStorage["folders"])
 		return ""
 
@@ -39,6 +41,7 @@ var getFolder = function(info) {
 var match = function(info, filter) {
 	for(var key in info) {
 		if(filter[key] && filter[key].length > 0) {
+			// check if info[key] (string) is inside filter[key] (array)		
 			if(filter[key].indexOf(info[key]) != -1)
 				return true;
 		}

@@ -80,7 +80,7 @@ li.folders:before {
 	color: gray;
 }
 #trash {
-	font-size: 32pt;
+	font-size: 3em;
 }
 #trashcan {
 	float: bottom;

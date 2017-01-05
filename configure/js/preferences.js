@@ -10,7 +10,6 @@ var Preferences = function() {
 	var add = function(folder, filter) {
 		for(var i=0; i<prefs.length; i++) {
 			if(prefs[i].folder == folder) {
-				console.log(prefs[i]);
 				for(var key in filter) {
 					prefs[i]["filter"][key] = prefs[i]["filter"][key].concat(filter[key]);
 				}
@@ -34,7 +33,6 @@ var Preferences = function() {
 			for(var i=0; i<prefs.length; i++) {
 				if(folder == prefs[i].folder) {
 					prefs.splice(i, 1);
-					console.log(prefs);
 					refreshDisplay();
 					save();
 					return;
