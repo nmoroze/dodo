@@ -51,16 +51,14 @@ $(document).ready(function() {
 	});
 
 	$(".help").on("click", function(e) {
-		bootbox.alert("Welcome to Dodo! This interface provides an easy way to manage your Dodo filters.\
-			A filter in Dodo consists of two different things: <br> <br>\
-			A <b>folder</b>, where items that match your criteria are stored when you download them, and the \
-			<b>criteria</b>, which specify what files go into the folder, based on their file extensions and the website they came from. \
-			Filters can be rearranged in priority by dragging and dropping them. To get started, you can use the buttons above to either load default settings, \
-			or create your own filter from scratch.");
+		bootbox.alert("Welcome to Dodo! This interface provides an easy way to manage your folders and their filters.<br><br>\
+			Each folder has a set of filters associated with it that specify which files go into that folder, based on their file extensions and which website they came from. \
+			Folders can be rearranged in priority by dragging and dropping them. To get started, you can use the buttons to either load default settings, \
+			or create your own folders from scratch.");
 	});
 
 	$(".about").click(function(e) {
-		bootbox.alert("<b>Dodo v0.1</b> <br> by Noah Moroze <br> \
+		bootbox.alert("<b>Dodo</b> <br> by Noah Moroze <br> \
 			Thanks for trying out Dodo! If you would like to file a bug report, please submit it <a href='http://gitreports.com/issue/nmoroze/dodo'>here</a>.<br> \
 			Dodo is an open source project. Feel free to check it out and contribute on <a href='https://github.com/nmoroze/dodo'>Github</a>.");
 	});
